@@ -8,7 +8,7 @@
     "require-dev": {
         "rmagnoprado/debug": "dev-master"
     },
-    "license": "MIT Licence",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Rmagnoprado\\Rmcurl\\": "app/"
