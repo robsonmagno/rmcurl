@@ -1,0 +1,39 @@
+{
+    "name": "rmagnoprado/rmcurl",
+    "description": "Chamada CURL em PHP com opções de certificado, proxy e senha",
+    "type": "library",
+    "require": {
+        "rmagnoprado/debug": ">=1.0.1"
+    },
+    "require-dev": {
+        "rmagnoprado/debug": "dev-master"
+    },
+    "license": "MIT Licence",
+    "autoload": {
+        "psr-4": {
+            "Rmagnoprado\\Rmcurl\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Rmagnoprado\\Rmcurl\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit tests",
+        "phpstan": "vendor/bin/phpstan analyse app tests",
+        "phpinsights": "./vendor/bin/phpinsights analyse app --format=json > log/phpinsights.json -v --fix"        
+    },
+    "authors": [
+        {
+            "name": "Robson Magno",
+            "email": "rmagnoprado@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
