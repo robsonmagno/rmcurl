@@ -90,7 +90,9 @@ class CurlRequest
             if($header!=null) curl_setopt($oCurl, CURLOPT_HTTPHEADER, $header);
 
             # Seta informações da chamada
-            $this->setRequest((string) json_encode(['header' => $header,'body' => json_decode($request)]));
+            if(isset($request) && isset($header)) {
+                $this->setRequest((string) json_encode(['header' => $header,'body' => json_decode($request)]));
+            }            
             $this->setResponse((string) curl_exec($oCurl));
             $this->setInfo((string) json_encode(curl_getinfo($oCurl)));
             $this->setCurlError((string) curl_error($oCurl));
