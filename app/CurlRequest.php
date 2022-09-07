@@ -82,11 +82,12 @@ class CurlRequest
             }
 
             # HEADER E POST FIELDS
-            if (! empty($request)) {
+            if (!empty($request)) {
                 curl_setopt($oCurl, CURLOPT_POST, 1);
                 if($request!=null) curl_setopt($oCurl, CURLOPT_POSTFIELDS, $request);
-                if($header!=null) curl_setopt($oCurl, CURLOPT_HTTPHEADER, $header);
             }
+
+            if($header!=null) curl_setopt($oCurl, CURLOPT_HTTPHEADER, $header);
 
             # Seta informações da chamada
             $this->setRequest((string) json_encode(['header' => $header,'body' => json_decode($request)]));
