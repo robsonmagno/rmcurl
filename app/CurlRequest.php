@@ -29,6 +29,7 @@ class CurlRequest
     private string $responseHead;
     private string $responseBody;
     private string $method;
+    private int $httpVersion;
 
     /**
      * Função Curl Para Requisição segura com Certificado Digial
@@ -59,7 +60,7 @@ class CurlRequest
             curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, 10);
             curl_setopt($oCurl, CURLOPT_TIMEOUT, 10 + 20);
             curl_setopt($oCurl, CURLOPT_HEADER, 1);
-            curl_setopt($oCurl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+            curl_setopt($oCurl, CURLOPT_HTTP_VERSION, $this->httpVersion);
             curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 1);
             curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
 
@@ -234,6 +235,13 @@ class CurlRequest
      */
     public function setMethod(string $method):void{
         $this->method = $method; 
+    }
+
+    /**
+     * Metodo responsável por setar a versão do HTTP
+     */
+    public function setHttpVersion(int $version):void{
+        $this->httpVersion = $version; 
     }
 
     /**

@@ -50,6 +50,7 @@ $cReq->setCertPrivate($CLIENT_CERT_PRIVATE);
 $cReq->setTemppass("");
 $cReq->setMethod('GET');
 $cReq->setEnableSecurity(true);
+$cReq->setHttpVersion(CURL_HTTP_VERSION_1_1);
 $cReq->request($url, $header, $request);
 
 //Funções de captura funcioando, mas não usadas

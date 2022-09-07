@@ -35,6 +35,7 @@ class CurlRequestTest extends TestCase {
         $cReq->setMethod('GET');
         $cReq->setEnableSecurity(true);
         $cReq->setTemppass("");
+        $cReq->setHttpVersion(CURL_HTTP_VERSION_1_0);
         
         $this->assertEquals(true, 
           $cReq->request($url, $header, $request)
