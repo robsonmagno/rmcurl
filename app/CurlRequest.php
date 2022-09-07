@@ -28,13 +28,14 @@ class CurlRequest
     private string $response;
     private string $responseHead;
     private string $responseBody;
+    private string $method;
 
     /**
      * Função Curl Para Requisição segura com Certificado Digial
      *
      * @param array<string> $header
      */
-    public function request(string $url, array $header, string $request): bool
+    public function request(string $url, array $header = null, string $request = null): bool
     {
         try {
             # Inicializa Curl
@@ -53,6 +54,7 @@ class CurlRequest
 
             # Opções Curl
             curl_setopt($oCurl, CURLOPT_URL, $url);
+            curl_setopt($oCurl, CURLOPT_CUSTOMREQUEST, $this->method);
             curl_setopt($oCurl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
             curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, 10);
             curl_setopt($oCurl, CURLOPT_TIMEOUT, 10 + 20);
@@ -81,8 +83,8 @@ class CurlRequest
             # HEADER E POST FIELDS
             if (! empty($request)) {
                 curl_setopt($oCurl, CURLOPT_POST, 1);
-                curl_setopt($oCurl, CURLOPT_POSTFIELDS, $request);
-                curl_setopt($oCurl, CURLOPT_HTTPHEADER, $header);
+                if($request!=null) curl_setopt($oCurl, CURLOPT_POSTFIELDS, $request);
+                if($header!=null) curl_setopt($oCurl, CURLOPT_HTTPHEADER, $header);
             }
 
             # Seta informações da chamada
@@ -100,10 +102,7 @@ class CurlRequest
             $this->setResponseHead(trim(substr($this->response, 0, (int) $this->headsize)));
             $this->setResponseBody(trim(substr($this->response, (int) $this->headsize)));
         } catch (\Exception $e) {
-            echo 'Exception:<br>';
-            echo '<pre>';
-            var_dump($e->getMessage());
-            echo '</pre>';
+            $this->setCurlError($e->getMessage());
         }
 
         return true;
@@ -223,68 +222,73 @@ class CurlRequest
     }
 
     /**
-     * Metodo responsável por Mostrar o httpcode
+     * Metodo responsável por habilitar a segurança
      */
-    public function showHttpCode(): int
+    public function setEnableSecurity(bool $enable):void {
+        $this->enableSecurity = $enable;
+    }
+
+     
+     /**
+     * Metodo responsável por setar o metódo
+     */
+    public function setMethod(string $method):void{
+        $this->method = $method; 
+    }
+
+    /**
+     * Metodo responsável por Retornar o retorno Curl
+     */
+    public function getResponse():string{
+        return $this->responseBody; 
+     }
+
+
+    /**
+     * Metodo responsável por Retornar o httpcode
+     */
+    public function getHttpCode(): int
     {
         return $this->httpcode;
     }
 
     /**
-     * Metodo responsável por Mostrar o ResponseHead
+     * Metodo responsável por Retornar o ResponseHead
      */
-    public function showResponseHead(): string
+    public function getResponseHead(): string
     {
         return $this->responseHead;
     }
 
     /**
-     * Metodo responsável por Mostrar o ResponseBody
+     * Metodo responsável por Retornar o ResponseBody
      */
-    public function showResponseBody(): string
+    public function getResponseBody(): string
     {
         return $this->responseBody;
     }
 
     /**
-     * Metodo responsável por Mostrar o request
+     * Metodo responsável por Retornar o request
      */
-    public function showRequest(): string
+    public function getRequest(): string
     {
-        $debug = new Main();
-        return $debug->getScript($this->request);
+        return $this->request;
     }
 
     /**
-     * Metodo responsável por Mostrar o retorno Curl
+     * Metodo responsável por Retornar o Erro Curl
      */
-    public function showResponse(): string
+    public function getError(): string
     {
-        $vl = (string) json_encode(explode(chr(13), $this->response));
-        $debug = new Main();
-        return $debug->getScript($vl);
+        return $this->curlError;
     }
 
     /**
-     * Metodo responsável por Mostrar o Erro Curl
+     * Metodo responsável por Retornar o Info Curl
      */
-    public function showError(): string
+    public function getInfo(): string
     {
-        $retorno = '';
-        $vl = (string) json_encode(explode("\n", $this->curlError));
-        if (strlen($this->curlError) > 0) {
-            $debug = new Main();
-            $retorno = $debug->getScript($vl);
-        }
-        return $retorno;
-    }
-
-    /**
-     * Metodo responsável por Mostrar o Info Curl
-     */
-    public function showInfo(): string
-    {
-        $debug = new Main();
-        return $debug->getScript($this->info);
+        return $this->info;
     }
 }

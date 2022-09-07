@@ -48,18 +48,19 @@ $cReq->setCACert($CLIENT_CA_CERT);
 $cReq->setCertPublic($CLIENT_CERT_PUBLIC);
 $cReq->setCertPrivate($CLIENT_CERT_PRIVATE);
 $cReq->setTemppass("");
+$cReq->setMethod('GET');
+$cReq->setEnableSecurity(true);
 $cReq->request($url, $header, $request);
 
+//Funções de captura funcioando, mas não usadas
 /*
-$cReq->showRequest();
-$cReq->showError();
-$cReq->showInfo();
-$cReq->showResponse();
-
-$json = (string) json_encode(['header' => $header,'body' => json_decode($request)]);
+$cReq->getResponse();
+$cReq->getRequest();
+$cReq->getError();
+$cReq->getInfo();
 */
 echo $debug->getBody();
 ?>
 <script>
-<?php $debug->getScript($json); ?>
+<?php //$debug->getScript($json); ?>
 </script></body></html>

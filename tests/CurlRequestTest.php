@@ -32,6 +32,8 @@ class CurlRequestTest extends TestCase {
         $cReq = new CurlRequest();
         $cReq->setCertPublic($CLIENT_CERT_PUBLIC);
         $cReq->setCertPrivate($CLIENT_CERT_PRIVATE);
+        $cReq->setMethod('GET');
+        $cReq->setEnableSecurity(true);
         $cReq->setTemppass("");
         
         $this->assertEquals(true, 
