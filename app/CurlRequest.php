@@ -251,7 +251,7 @@ class CurlRequest
      * Metodo responsável por Retornar o retorno Curl
      */
     public function getResponse():string{
-        return $this->responseBody; 
+        return $this->response; 
      }
 
 
