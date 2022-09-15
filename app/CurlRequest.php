@@ -61,9 +61,11 @@ class CurlRequest
             curl_setopt($oCurl, CURLOPT_TIMEOUT, 10 + 20);
             curl_setopt($oCurl, CURLOPT_HEADER, 1);
             curl_setopt($oCurl, CURLOPT_HTTP_VERSION, $this->httpVersion);
-            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 1);
+            curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
-
+            curl_setopt($oCurl, CURLOPT_ENCODING, '');
+            curl_setopt($oCurl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)');
+            
             # Opções de Segurança Curl
             if ($this->enableSecurity) {
                 curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, 2);

@@ -21,7 +21,7 @@ class CurlRequestTest extends TestCase {
 
         $header = array(
             "Content-type: application/json;charset=\"utf-8\"",
-            "Authorization: Basic {{df006a4a-27b9-11ed-a261-0242ac120002:df006c5c-27b9-11ed-a261-0242ac120002}}",
+            "Authorization: Basic {{client_id}:{client_secret}}",
             "Accept: application/json",
             "Cache-Control: no-cache",
             "Pragma: no-cache",
