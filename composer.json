@@ -3,7 +3,7 @@
     "description": "Chamada CURL em PHP com opções de certificado, proxy e senha",
     "type": "library",
     "require": {
-        "rmagnoprado/debug": ">=1.0.1"
+        "rmagnoprado/debug": ">=1.2.3"
     },
     "require-dev": {
         "rmagnoprado/debug": "dev-master"

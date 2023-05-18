@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "947387734c0239720e70a509997a5cb2",
+    "content-hash": "fbfc31b68a3a923f978eeb421b257827",
     "packages": [
         {
             "name": "cmgmyr/phploc",
@@ -2032,12 +2032,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsonmagno/debug.git",
-                "reference": "a77733b68bb454fddfef25b2aee2839a04e69562"
+                "reference": "bab14e4ac5f4e665fe64d6f6a85da4f41cfc6d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsonmagno/debug/zipball/a77733b68bb454fddfef25b2aee2839a04e69562",
-                "reference": "a77733b68bb454fddfef25b2aee2839a04e69562",
+                "url": "https://api.github.com/repos/robsonmagno/debug/zipball/bab14e4ac5f4e665fe64d6f6a85da4f41cfc6d45",
+                "reference": "bab14e4ac5f4e665fe64d6f6a85da4f41cfc6d45",
                 "shasum": ""
             },
             "require": {
@@ -2108,9 +2108,9 @@
             "description": "Package de debug PHP",
             "support": {
                 "issues": "https://github.com/robsonmagno/debug/issues",
-                "source": "https://github.com/robsonmagno/debug/tree/1.1.0"
+                "source": "https://github.com/robsonmagno/debug/tree/1.2.3"
             },
-            "time": "2023-05-18T20:27:23+00:00"
+            "time": "2023-05-18T21:19:00+00:00"
         },
         {
             "name": "sebastian/cli-parser",
