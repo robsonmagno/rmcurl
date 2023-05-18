@@ -36,7 +36,7 @@ $request = '{
     
 $header = array(
     "Content-type" => "application/json",
-    "Authorization" => "Basic {{df006a4a-27b9-11ed-a261-0242ac120002:df006c5c-27b9-11ed-a261-0242ac120002}}",
+    "Authorization" => "Basic {{YOUR_CLIENT_ID:YOUR_CLIENT_SECRET}}",
     "Accept" => "application/json",
     "Cache-Control" => "no-cache",
     "Pragma" => "no-cache",
@@ -60,8 +60,14 @@ $cReq->getRequest();
 $cReq->getError();
 $cReq->getInfo();
 */
+
+if($cReq->getError()) {
+    $json = json_encode(array('Erro' => $cReq->getError()));    
+}else{
+    $json = $cReq->getResponse();
+}
+
 echo $debug->getBody();
 ?>
-<script>
-<?php //$debug->getScript($json); ?>
-</script></body></html>
+<?php $debug->getScript($json); ?>
+</body></html>
